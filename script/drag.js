@@ -10,6 +10,7 @@ const drag = event => {
 
 const drop = event => {
 	event.preventDefault();
+
 	let data = event.dataTransfer.getData('text');
 	const image = document.getElementById(data);
 

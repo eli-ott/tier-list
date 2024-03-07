@@ -14,7 +14,7 @@ const search = async () => {
 
 	let value = document.getElementById('recherche').value;
 
-	if (value.length <= 2) {
+	if (value.length >= 2) {
 		const meal_res = await fetch(API_PATH + value, {
 			method: 'GET'
 		});
@@ -40,8 +40,17 @@ const search = async () => {
  * Select an image to drag
  */
 const select = event => {
-	console.log(event.target.parentNode);
-	if (!event.target.id.includes('choices') && !event.target.parentNode.className.includes('selected')) {
+	event.preventDefault();
+
+	if (!event.target.id.includes('choices') && !event.target.draggable && !event.target.alt && !event.target.parentNode.className.includes('selected')) {
+		event.target.parentNode.classList.add('selected');
+		document.querySelector('#selection').appendChild(event.target.parentNode);
+		event.target.parentNode.innerHTML += '<img src="./assets/trash.svg" onclick="deleteItem(event)" alt="trashcan" />';
+	} else if (event.target.draggable && !event.target.alt && !event.target.className.includes('selected')) {
+		event.target.classList.add('selected');
+		document.querySelector('#selection').appendChild(event.target);
+		event.target.innerHTML += '<img src="./assets/trash.svg" onclick="deleteItem(event)" alt="trashcan" />';
+	} else if (event.target.alt && !event.target.parentNode.className.includes('selected')) {
 		event.target.parentNode.classList.add('selected');
 		document.querySelector('#selection').appendChild(event.target.parentNode);
 		event.target.parentNode.innerHTML += '<img src="./assets/trash.svg" onclick="deleteItem(event)" alt="trashcan" />';
@@ -52,5 +61,5 @@ const select = event => {
  * Delete an item from the DOM
  */
 const deleteItem = event => {
-	delete event.targetNode.parentNode;
+	event.target.parentNode.remove();
 };

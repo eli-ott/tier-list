@@ -8,17 +8,28 @@
 	</head>
 	<body>
 		<main>
-			<div>
+			<div class="search-bar">
 				<input onkeyup="search()" type="text" id="recherche" />
 				<button onclick="search()">Rechercher</button>
+				<div id="choices"></div>
 			</div>
-			<div id="choices"></div>
 			<div id="selection"></div>
 			<section class="tier-list">
-				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container"></div>
-				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container"></div>
-				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container"></div>
-				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container"></div>
+				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container">
+					<div class="category" style="background-color: green">Délicieux</div>
+				</div>
+				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container">
+					<div class="category" style="background-color: yellowgreen">Très bon</div>
+				</div>
+				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container">
+					<div class="category" style="background-color: yellow">Bon</div>
+				</div>
+				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container">
+					<div class="category" style="background-color: orangered">Moyen</div>
+				</div>
+				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container">
+					<div class="category" style="background-color: red">Mauvais</div>
+				</div>
 			</section>
 		</main>
 		<script src="./script/drag.js" lang="text/javascript"></script>
