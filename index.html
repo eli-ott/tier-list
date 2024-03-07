@@ -7,6 +7,21 @@
 		<title>Document</title>
 	</head>
 	<body>
+		<main>
+			<div>
+				<input onkeyup="search()" type="text" id="recherche" />
+				<button onclick="search()">Rechercher</button>
+			</div>
+			<div id="choices"></div>
+			<div id="selection"></div>
+			<section class="tier-list">
+				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container"></div>
+				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container"></div>
+				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container"></div>
+				<div ondrop="drop(event)" ondragover="allowDrop(event)" class="drag-container"></div>
+			</section>
+		</main>
+		<script src="./script/drag.js" lang="text/javascript"></script>
 		<script src="./script/main.js" lang="text/javascript"></script>
 	</body>
 </html>
